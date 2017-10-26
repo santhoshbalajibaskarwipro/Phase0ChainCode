@@ -286,7 +286,7 @@ func (t *ManageProposal) get_all_proposal_id(stub shim.ChaincodeStubInterface, a
 	fmt.Print("proposal_id_FormIndex : ")
 	fmt.Println(proposal_id_FormIndex)
 	// Proposal Data
-	jsonProposalResp = "{"
+	jsonProposalResp = "{ hi"
 	for i,val := range proposal_id_FormIndex{
 		fmt.Println(strconv.Itoa(i) + " - looking at " + val + " for all Proposal")
 		valueAsBytes, err := stub.GetState(val)
