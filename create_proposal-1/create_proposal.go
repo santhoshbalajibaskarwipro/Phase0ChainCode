@@ -38,6 +38,16 @@ type proposal struct{
 	proposal_id string `json:"proposal_id"`	
 	region string `json:"region"`
 	country string `json:"country"`
+	proposal_type string `json:"proposal_type"`
+	proposal_date string `json:"proposal_date"`
+	approval_date string `json:"approval_date"`
+	shared_with_procurement_team_on string `json:"shared_with_procurement_team_on"`
+	approver string `json:"approver"`
+	number_of_tasks_covered string `json:"number_of_tasks_covered"`
+	device_qty string `json:"device_qty"`
+	accessary_periperal_qty string `json:"accessary_periperal_qty"`
+	total_qty string `json:"total_qty"`
+	status string `json:"status"`
 	
 }
 // ============================================================================================================================
@@ -121,7 +131,7 @@ func (t *ManageProposal) Query(stub shim.ChaincodeStubInterface, function string
 // ============================================================================================================================
 func (t *ManageProposal) create_proposal_id(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	var err error
-	if len(args) != 3 {
+	if len(args) != 13 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 9")
 	}
 	fmt.Println("Creating a new Form for proposal id ")
@@ -134,19 +144,69 @@ func (t *ManageProposal) create_proposal_id(stub shim.ChaincodeStubInterface, ar
 	if len(args[2]) <= 0 {
 		return nil, errors.New("3rd argument must be a non-empty string")
 	}
+	if len(args[3]) <= 0 {
+		return nil, errors.New("4th argument must be a non-empty string")
+	}
+	if len(args[4]) <= 0 {
+		return nil, errors.New("5th argument must be a non-empty string")
+	}
+	if len(args[5]) <= 0 {
+		return nil, errors.New("6th argument must be a non-empty string")
+	}
+	if len(args[6]) <= 0 {
+		return nil, errors.New("7th argument must be a non-empty string")
+	}
+	if len(args[7]) <= 0 {
+		return nil, errors.New("8th argument must be a non-empty string")
+	}
+	if len(args[8]) <= 0 {
+		return nil, errors.New("9th argument must be a non-empty string")
+	}
+	if len(args[9]) <= 0 {
+		return nil, errors.New("10th argument must be a non-empty string")
+	}
+	if len(args[10]) <= 0 {
+		return nil, errors.New("11th argument must be a non-empty string")
+	}
+	if len(args[11]) <= 0 {
+		return nil, errors.New("12th argument must be a non-empty string")
+	}
+	if len(args[12]) <= 0 {
+		return nil, errors.New("13th argument must be a non-empty string")
+	}
 	
 	
 	proposal_id := args[0]
 	region := args[1]
 	country := args[2]
-		
+	proposal_type := args[3]
+	proposal_date := args[4]
+	approval_date := args[5]
+	shared_with_procurement_team_on := args[6]
+	approver := args[7]
+	number_of_tasks_covered := args[8]
+	device_qty := args[9]
+	accessary_periperal_qty := args[10]
+	total_qty := args[11]
+	status := args[12]
 	
 		
 	//build the Form json string manually
 	input := 	`{`+
 		`"proposal_id": "` + proposal_id + `" , `+
 		`"region": "` + region + `" , `+ 
-		`"country": "` + country + `"`+
+		`"country": "` + country + `" , `+ 
+		`"proposal_type": "` + proposal_type + `" , `+ 
+		`"proposal_date": "` + proposal_date + `" , `+ 
+		`"approval_date": "` + approval_date + `" , `+ 
+		`"shared_with_procurement_team_on": "` + shared_with_procurement_team_on + `" , `+ 
+		`"approver": "` + approver + `" , `+ 
+		`"number_of_tasks_covered": "` + number_of_tasks_covered + `" , `+ 
+		`"device_qty": "` + device_qty + `" , `+ 
+		`"accessary_periperal_qty": "` + accessary_periperal_qty + `" , `+ 
+		`"total_qty": "` + total_qty + `" , `+ 
+		`"status": "` + status + `"` +		
+		
 		`}`
 		fmt.Println("input: " + input)
 		fmt.Print("input in bytes array: ")
@@ -228,6 +288,6 @@ func (t *ManageProposal) get_all_proposal(stub shim.ChaincodeStubInterface, args
 
 	jsonProposalResp = jsonProposalResp + "}"
 	fmt.Println([]byte(jsonProposalResp))
-	fmt.Println("Fetched All Tier-3 Forms successfully.")
+	fmt.Println("Fetched All proposal Forms successfully.")
 	return []byte(jsonProposalResp), nil
 }
