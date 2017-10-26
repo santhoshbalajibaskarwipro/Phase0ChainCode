@@ -138,7 +138,7 @@ func (t *ManageProposal) Query(stub shim.ChaincodeStubInterface, function string
 // ============================================================================================================================
 func (t *ManageProposal) create_proposal_id(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	var err error
-	if len(args) != 10 {
+	if len(args) != 13 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 9")
 	}
 	fmt.Println("Creating a new Form for proposal id ")
@@ -190,8 +190,6 @@ func (t *ManageProposal) create_proposal_id(stub shim.ChaincodeStubInterface, ar
 		`"accessary_periperal_qty": "` + accessary_periperal_qty + `" , `+ 
 		`"total_qty": "` + total_qty + `" , `+ 
 		`"status": "` + status + `"` +	
-	
-	
 	
 		`}`
 	
