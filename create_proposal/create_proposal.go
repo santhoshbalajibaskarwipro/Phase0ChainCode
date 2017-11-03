@@ -24,7 +24,7 @@ import (
 "fmt"
 "strconv"
 "encoding/json"
-
+//"errors"
 "github.com/hyperledger/fabric/core/chaincode/shim"
 //"github.com/hyperledger/fabric/core/util"
 )
