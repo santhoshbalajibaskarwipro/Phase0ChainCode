@@ -80,7 +80,7 @@ func (t *Manage_po_order) Init(stub shim.ChaincodeStubInterface, function string
 	var po_order_form_empty []string
 	po_order_form_empty_json_as_bytes, _ := json.Marshal(po_order_form_empty)								//marshal an emtpy array of strings to clear the index
 	err = stub.PutState(approved_po_order_entry, po_order_form_empty_json_as_bytes)
-	if err != nil {
+	if err != nil { 
 		return nil, err
 	}
 	return nil, nil
